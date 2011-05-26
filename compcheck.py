@@ -89,7 +89,7 @@ class Pilot(object):
                 ths = tr.findAll('th')
                 if ths and ths[0].contents[0] == 'Rank':
                     indexes = dict((th.contents[0], i) for i, th in enumerate(ths))
-                    tasks = sorted(k for k in indexes.keys() if re.match(r'T\d+\Z', k))
+                    tasks = sorted((k for k in indexes.keys() if re.match(r'T\d+\Z', k)), key=lambda k: int(k[1:]))
 
 
 class Competition(object):
